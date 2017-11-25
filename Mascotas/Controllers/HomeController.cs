@@ -10,28 +10,37 @@ namespace Mascotas.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        List<Mascota> listado = new List<Mascota>();
+
+        public HomeController() {
+
+            listado.Add(new Mascota() { codigo = 1, nombre = "Jack", propietario = "Karina Cardenas", edad = 10, raza = "Golden" });
+            listado.Add(new Mascota() { codigo = 2, nombre = "Toby", propietario = "Karina Cardenas", edad = 9, raza = "kiltro" });
+
+        }
+        public IActionResult Mantenedor()
         {
-            return View();
+
+            return View(new Mascota());
         }
 
-        public IActionResult About()
+        public IActionResult Listado()
         {
-            ViewData["Message"] = "Your application description page.";
 
-            return View();
+            return View(listado);
+        }
+        public IActionResult Ficha(int codigo, string nombre, string raza, string propietario, int edad)
+        {
+            Mascota nueva = new Mascota() {
+            codigo = codigo,
+            nombre = nombre,
+            raza = raza,
+            propietario = propietario,
+            edad = edad
+
+        };
+            return View(nueva);
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

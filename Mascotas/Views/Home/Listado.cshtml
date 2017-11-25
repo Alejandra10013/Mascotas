@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Mascota>
+
+<h2>Listado de Mascotas</h2>
+
+<hr/>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Propietario</th>
+        <th>Raza</th>
+        <th>Edad</th>
+    </thead>
+
+    @foreach (Mascota mascota in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(i => mascota.codigo)</td>
+            <td> @Html.DisplayFor(i => mascota.nombre)</td>
+            <td> @Html.DisplayFor(i => mascota.propietario)</td>
+            <td> @Html.DisplayFor(i => mascota.raza)</td>
+            <td> @Html.DisplayFor(i => mascota.edad)</td>
+        </tr>
+
+    }
+</table> 
